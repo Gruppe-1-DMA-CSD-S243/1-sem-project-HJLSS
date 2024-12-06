@@ -34,7 +34,7 @@ public abstract class Product {
 		this.stockKeepingUnit = stockKeepingUnit;
 	}
 	
-	protected String getBarcode() {
+	public String getBarcode() {
 		return barcode;
 	}
 }
