@@ -20,6 +20,17 @@ public class ProductContainer {
 	}
 	
 	public Product findProductByBarcode(String barcode) {
-		return products.get(barcode);
+		if(products.get(barcode) instanceof SimpleProduct) {
+			return (SimpleProduct)products.get(barcode);
+		}
+		else {
+			return (AdvancedProduct)products.get(barcode);
+		}
+	}
+	
+	public void addProduct(Product product){
+		String key = product.getBarcode();
+		
+		products.put(key, product);
 	}
 }
