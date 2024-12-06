@@ -1,4 +1,4 @@
-package model;
+package model.Customer;
 
 public class AdvancedProduct {
 

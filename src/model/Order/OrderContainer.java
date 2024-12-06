@@ -1,4 +1,4 @@
-package model;
+package model.Order;
 
 public class OrderContainer {
 
