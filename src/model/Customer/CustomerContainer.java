@@ -3,28 +3,28 @@ package model.Customer;
 import java.util.HashMap;
 
 public class CustomerContainer {
-private static CustomerContainer instance;	
-private HashMap<String, Customer> businessCustomers;
+	private static CustomerContainer instance;	
+	private HashMap<String, BusinessCustomer> businessCustomers;
 
 
-private CustomerContainer() {
-	businessCustomers = new HashMap<>();
-}
-public static CustomerContainer getInstance() {
-	if(instance == null) {
-		instance = new CustomerContainer();
+	private CustomerContainer() {
+		businessCustomers = new HashMap<>();
 	}
-	return instance;
-}
+	
+	public static CustomerContainer getInstance() {
+		if(instance == null) {
+			instance = new CustomerContainer();
+		}
+		return instance;
+	}
 
-
-public Customer findByCVR(String cvr) {
-	/*
-	 * for (Customer customer : customers) {
-	 * if(currentCustomer.getCVR().equalsIgnoreCase(cvr)) { return customer; } }
-	 * return null;
-	 */
-	Customer foundCustomer = businessCustomers.get(cvr);
+	public BusinessCustomer findByCVR(String cvr) {
+		BusinessCustomer foundCustomer = businessCustomers.get(cvr);
 		return foundCustomer;
-}
+	}
+	
+	public void addCustomer(BusinessCustomer customerToAdd) {
+		String key = customerToAdd.getCVR();
+		businessCustomers.put(key, customerToAdd);
+	}
 }

@@ -1,23 +1,16 @@
 package controller;
 
 import java.util.HashMap;
-
 import model.Customer.Customer;
 
 public class CustomerController {
-private HashMap<String, Customer> businessCustomers;
+	private HashMap<String, Customer> businessCustomers;
 
+	public CustomerController() {
 
-public CustomerController() {
-
-}
-public Customer findCustomerByCVR(String cvr) {
-	/*
-	 * for (Customer customer : customers) {
-	 * if(currentCustomer.getCVR().equalsIgnoreCase(cvr)) { return customer; } }
-	 * return null;
-	 */
-	Customer foundCustomer = businessCustomers.get(cvr);
-		return foundCustomer;
-}
+	}
+	
+	public Customer findCustomerByCVR(String cvr) {
+		return businessCustomers.get(cvr);
+	}
 }
