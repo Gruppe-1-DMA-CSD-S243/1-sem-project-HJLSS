@@ -1,16 +1,19 @@
 package controller;
 
 import java.util.HashMap;
+
+import model.Customer.BusinessCustomer;
 import model.Customer.Customer;
+import model.Customer.CustomerContainer;
 
 public class CustomerController {
-	private HashMap<String, Customer> businessCustomers;
+	
 
 	public CustomerController() {
 
 	}
 	
-	public Customer findCustomerByCVR(String cvr) {
-		return businessCustomers.get(cvr);
+	public BusinessCustomer findCustomerByCVR(String cvr) {
+		return CustomerContainer.getInstance().getCustomers().get(cvr);
 	}
 }

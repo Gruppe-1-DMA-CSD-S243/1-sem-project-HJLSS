@@ -18,7 +18,7 @@ public class CustomerContainer {
 		return instance;
 	}
 
-	public BusinessCustomer findByCVR(String cvr) {
+	public BusinessCustomer findCustomerByCVR(String cvr) {
 		BusinessCustomer foundCustomer = businessCustomers.get(cvr);
 		return foundCustomer;
 	}
@@ -26,5 +26,9 @@ public class CustomerContainer {
 	public void addCustomer(BusinessCustomer customerToAdd) {
 		String key = customerToAdd.getCVR();
 		businessCustomers.put(key, customerToAdd);
+	}
+	
+	public HashMap<String, BusinessCustomer> getCustomers(){
+		return this.businessCustomers;
 	}
 }

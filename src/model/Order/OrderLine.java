@@ -1,6 +1,7 @@
 package model.Order;
 
 import model.Product.Product;
+import model.Product.ProductContainer;
 
 public class OrderLine {
 	
@@ -13,11 +14,15 @@ public class OrderLine {
 	}
 	
 	public void addProductToOrderLine(Product product) {
-		
+		this.product = product;
 	}
 	
 	public void setSubTotal() {
-		
+		this.subTotal = this.product.getPrice() * this.quantity;
+	}
+	
+	public double getSubTotal() {
+		return this.subTotal;
 	}
 
 }

@@ -12,4 +12,20 @@ public abstract class Customer {
 		this.phone=phone;
 		this.address=address;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public String getAddress() {
+		return address;
+	}
 }

@@ -19,7 +19,12 @@ public class OrderContainer {
 	}
 	
 	public void finishOrder(Order order) {
-		
+		String key = order.getOrderNo();
+		orders.put(key, order);
+	}
+	
+	public HashMap<String, Order> getOrders(){
+		return this.orders;
 	}
 	
 }
