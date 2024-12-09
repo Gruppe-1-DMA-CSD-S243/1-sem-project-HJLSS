@@ -20,4 +20,10 @@ public class ProductCategory {
 	public String getProductCategoryID() {
 		return productCategoryID;
 	}
+	
+	public void addProductToProductCategory(Product product) {
+		String key = product.getBarcode();
+		
+		products.put(key, product);
+	}
 }
