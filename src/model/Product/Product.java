@@ -2,18 +2,18 @@ package model.Product;
 
 public abstract class Product {
 
-	private String barcode;
-	private String productNo;
-	private ProductCategory category;
-	private String name;
-	private String manufacturerName;
-	private String manufacturerID;
-	private String model;
-	private String description;
-	private double price;
-	private double costPrice;
-	private double msrp;
-	private int stockKeepingUnit;
+	protected String barcode;
+	protected String productNo;
+	protected ProductCategory category;
+	protected String name;
+	protected String manufacturerName;
+	protected String manufacturerID;
+	protected String model;
+	protected String description;
+	protected double price;
+	protected double costPrice;
+	protected double msrp;
+	protected int stockKeepingUnit;
 	
 	protected Product(String barcode, String productNo, ProductCategory category, 
 					String name, String manufacturerName, String manufacturerID, String model, 
