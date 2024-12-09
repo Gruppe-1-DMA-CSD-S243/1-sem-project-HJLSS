@@ -21,8 +21,5 @@ public class AdvancedProduct extends Product {
 		return item;
 	}
 	
-	public String getBarcode() {
-		return super.getBarcode();
-	}
 	
 }

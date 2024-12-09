@@ -12,8 +12,5 @@ public class SimpleProduct extends Product {
 		
 	}
 	
-	public String getBarcode() {
-		return super.getBarcode();
-	}
 	
 }

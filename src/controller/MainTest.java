@@ -3,6 +3,8 @@ import model.*;
 import model.Customer.BusinessCustomer;
 import model.Customer.CustomerContainer;
 import model.Product.Product;
+import model.Product.ProductCategory;
+import model.Product.ProductCategoryContainer;
 import model.Product.ProductContainer;
 import model.Product.SimpleProduct;
 
@@ -22,6 +24,13 @@ public class MainTest {
 		
 		BusinessCustomer foundCustomer = CustomerContainer.getInstance().findByCVR("cvrTest");
 		System.out.println(foundCustomer.getCVR());
+		
+		ProductCategory productCategory1 = new ProductCategory("IDTest", "nameTest", "descriptionTest");
+		ProductCategoryContainer.getInstance().addProductCategory(productCategory1);
+		
+		ProductCategory foundProductCategory = ProductCategoryContainer.getInstance().findProductCategoryByProductCategoryID("IDTest");
+		System.out.println(foundProductCategory.getProductCategoryID());
+		
 	}
 	
 }
