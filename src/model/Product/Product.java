@@ -41,4 +41,8 @@ public abstract class Product {
 	public double getPrice() {
 		return price;
 	}
+	
+	public ProductCategory getProductCategory() {
+		return this.category;
+	}
 }

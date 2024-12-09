@@ -57,4 +57,10 @@ public class OrderController {
 		
 	}
 
+	public Order getOrder() {
+		return order;
+	}
+	
+	
+
 }
