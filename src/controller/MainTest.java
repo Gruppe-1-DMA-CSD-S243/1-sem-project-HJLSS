@@ -14,7 +14,7 @@ public class MainTest {
 		SimpleProduct simpleProduct1 = new SimpleProduct("1", "1", null, "hammer", "Stanley", "123", "1000x", "stærk", 1000.00, 200.00, 500.00, 5);
 		ProductContainer.getInstance().addProduct(simpleProduct1);
 		
-	    Product foundProduct = ProductContainer.getInstance().findProductByBarcode("1");
+	    SimpleProduct foundProduct = (SimpleProduct)ProductContainer.getInstance().findProductByBarcode("1");
 		System.out.println(foundProduct.getBarcode());
 		
 		BusinessCustomer businessCustomer1 = new BusinessCustomer("nameTest", "emailTest", "phoneTest", "addressTest", "cvrTest");
