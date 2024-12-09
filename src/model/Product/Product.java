@@ -37,4 +37,8 @@ public abstract class Product {
 	public String getBarcode() {
 		return barcode;
 	}
+
+	public double getPrice() {
+		return price;
+	}
 }
