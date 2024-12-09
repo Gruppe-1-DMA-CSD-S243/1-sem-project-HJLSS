@@ -24,5 +24,13 @@ public class OrderLine {
 	public double getSubTotal() {
 		return this.subTotal;
 	}
+	
+	public Product getProduct() {
+		return this.product;
+	}
+	
+	public int getQuantity() {
+		return this.quantity;
+	}
 
 }

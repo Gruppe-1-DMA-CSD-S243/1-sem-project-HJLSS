@@ -43,6 +43,12 @@ public class TextInput {
         return keyboard.nextInt();
     }
     
+    public static double inputDouble(String question) {
+    	Scanner keyboard = new Scanner(System.in);
+    	printQuesiton(question);
+    	return keyboard.nextDouble();
+    }
+    
     private static void printQuesiton(String question) {
         System.out.print(" " + question + ": ");
     }

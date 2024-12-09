@@ -7,7 +7,7 @@ public class OrderMenu {
 	OrderUI orderUI;
 	
 	public OrderMenu() {
-		orderUI = new OrderUI();
+		
 	}
 	
 	public void start() {
@@ -15,7 +15,7 @@ public class OrderMenu {
 		while (running) {
 			int choice = writeOrderMenu();
 			if (choice == 1) {
-				orderUI.start();
+				orderUI = new OrderUI();
 			}
 			
 			else {

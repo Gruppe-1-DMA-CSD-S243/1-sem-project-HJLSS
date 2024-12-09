@@ -49,8 +49,13 @@ public class Order {
 		orderLines.add(newOrderLine);
 	}
 	
+	public void printReceipt() {
+//		for (OrderLine orderLine : orderLines) {
+//			System.out.println("" + orderLine.getQuantity() + ", " + orderLine.getProduct().getPrice());
+//		}
+	}
+	
 	public void setPaid(boolean paid) {
-		paid = true;
 		this.paid = paid;
 	}
 	
