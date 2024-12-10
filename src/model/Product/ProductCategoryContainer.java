@@ -3,6 +3,9 @@ package model.Product;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Jonas
+ */
 public class ProductCategoryContainer {
 
 	private static ProductCategoryContainer instance;
@@ -19,6 +22,10 @@ public class ProductCategoryContainer {
 		return instance;
 	}
 	
+	/**
+	 * Adds productCategory to the ProductCategoryContainer and sets the productCategoryID as the key
+	 * @param productCategory
+	 */
 	public void addProductCategory(ProductCategory productCategory){
 		String key = productCategory.getProductCategoryID();
 		

@@ -1,9 +1,28 @@
 package model.Product;
 
+/**
+ * 
+ * @author Jonas, Henrik og Sofus
+ */
 public class AdvancedProduct extends Product {
 
 	private Item item;
 	
+	/**
+	 * Calls the constructor in the superclass with provided parameters
+	 * @param barcode
+	 * @param productNo
+	 * @param category
+	 * @param name
+	 * @param manufacturerName
+	 * @param manufacturerID
+	 * @param model
+	 * @param description
+	 * @param price
+	 * @param costPrice
+	 * @param msrp
+	 * @param stockKeepingUnit
+	 */
 	public AdvancedProduct(String barcode, String productNo, ProductCategory category, 
 			String name, String manufacturerName, String manufacturerID, String model, 
 			String description, double price, double costPrice, double msrp,

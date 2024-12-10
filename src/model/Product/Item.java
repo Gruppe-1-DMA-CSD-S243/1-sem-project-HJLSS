@@ -1,5 +1,8 @@
 package model.Product;
 
+/**
+ * @author Jonas, Henrik og Sofus
+ */
 public class Item {
 
 	private String serialNo;

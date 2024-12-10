@@ -4,7 +4,7 @@ import controller.OrderController;
 
 public class OrderUI {
 	
-	OrderController orderController;
+	private OrderController orderController;
 	
 	public OrderUI() {
 		orderController = new OrderController();
