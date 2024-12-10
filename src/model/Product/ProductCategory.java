@@ -24,6 +24,14 @@ public class ProductCategory {
 		return productCategoryID;
 	}
 	
+	public String getProductCategoryName() {
+		return name;
+	}
+	
+	public String getProductCategoryDescription() {
+		return description;
+	}
+	
 	/**
 	 * Adds a product to the HashMap "products" and sets the barcode on products as key
 	 * @param product

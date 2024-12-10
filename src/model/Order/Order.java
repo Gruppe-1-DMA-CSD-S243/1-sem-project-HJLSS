@@ -131,5 +131,16 @@ public class Order {
 		return orderLines;
 	}
 	
+	//used for JUnitTest
+	public OrderLine getOrderLineByProductBarcode(String testBarcode) {
+		OrderLine returnOrderLine = null;
+		for(OrderLine orderLine : orderLines) {
+			if(orderLine.getProduct().getBarcode().equals(testBarcode)) {
+				returnOrderLine = orderLine;
+			}
+		}
+		return returnOrderLine;
+	}
+	
 
 }
