@@ -7,7 +7,7 @@ public class OrderMenu {
 	OrderUI orderUI;
 	
 	public OrderMenu() {
-		
+		start();
 	}
 	
 	public void start() {
@@ -26,7 +26,7 @@ public class OrderMenu {
 	
 	private int writeOrderMenu() {
 		//Creates a keyboard object to read input
-		TextOptions menu = new TextOptions("\n ***** OrderMenu *****", "Tilbage");
+		TextOptions menu = new TextOptions("\n ***** Ordre Menu *****", "Tilbage");
 		menu.addOption("Opret Ordre");
 		
 		//TODO if you need more menu items they have to go here

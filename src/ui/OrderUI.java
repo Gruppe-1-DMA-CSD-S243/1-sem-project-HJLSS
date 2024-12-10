@@ -26,18 +26,29 @@ public class OrderUI {
 				start();
 			}
 			if (choice == 2) {
-				String cvr = TextInput.inputString("Indtast CVR");
+				if (orderController.getOrder().getCustomer() == null) {
+					String cvr = TextInput.inputString("Indtast CVR");	
+					addCustomerToOrder(cvr);
+					
+					System.out.println(orderController.getOrder().getCustomer().getCVR());
+				}
 				
-				addCustomerToOrder(cvr);
-				
-				System.out.println(orderController.getOrder().getCustomer().getCVR());
+				else {
+					System.out.println("Kunde allerede tilføjet");
+				}
 				start();
 			}
 			if (choice == 3) {
+				double amountPaid = TextInput.inputDouble("Indtast Beløb");
 				
+				makePayment(amountPaid);
+				
+				System.out.print(orderController.getOrder().isPaid());
+				start();
 			}
 			if (choice == 4) {
-				
+				finishOrder();
+				running = false;
 			}
 			
 			else {
@@ -48,7 +59,7 @@ public class OrderUI {
 	
 	private int writeOrderUI() {
 		//Creates a keyboard object to read input
-		TextOptions menu = new TextOptions("\n ***** OrderMenu *****", "Tilbage");
+		TextOptions menu = new TextOptions("\n ***** Opret Ordre *****", "Tilbage");
 		menu.addOption("Tilføj Produkt");
 		menu.addOption("Tilføj Kunde");
 		menu.addOption("Betal Ordre");
@@ -80,11 +91,15 @@ public class OrderUI {
 	}
 	
 	private void makePayment(double amount) {
-//		boolean paid = false;
-//		if (amount >= orderController.getOrder().getPrice()) {
-//			paid = true;
-//		}
-//		
-//		orderController.makePayment(paid);
+		boolean paid = false;
+		if (amount >= orderController.getOrder().getPrice()) {
+			paid = true;
+		}
+		
+		orderController.makePayment(paid);
+	}
+	
+	private void finishOrder() {
+		orderController.finishOrder();
 	}
 }

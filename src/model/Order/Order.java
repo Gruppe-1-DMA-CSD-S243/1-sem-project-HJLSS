@@ -50,9 +50,23 @@ public class Order {
 	}
 	
 	public void printReceipt() {
-//		for (OrderLine orderLine : orderLines) {
-//			System.out.println("" + orderLine.getQuantity() + ", " + orderLine.getProduct().getPrice());
-//		}
+		System.out.println();
+		if (this.customer != null) {
+			System.out.println("Kunde ");
+			System.out.println("Navn: " + this.customer.getName());
+			System.out.println("Addresse: " + this.customer.getAddress());
+			System.out.println("Email: " + this.customer.getEmail());
+			System.out.println("Telefon: " + this.customer.getPhone());
+			System.out.println("CVR: " + this.customer.getCVR());
+			System.out.println();
+		}
+		
+		for (OrderLine orderLine : orderLines) {
+			System.out.println("" + orderLine.getQuantity() + " " + orderLine.getProduct().getName() + " " + orderLine.getProduct().getPrice() + "DKK Subtotal: " + orderLine.getSubTotal());
+		}
+		System.out.println();
+		System.out.println("Total: " + getPrice());
+		
 	}
 	
 	public void setPaid(boolean paid) {

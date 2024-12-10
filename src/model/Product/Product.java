@@ -45,4 +45,46 @@ public abstract class Product {
 	public ProductCategory getProductCategory() {
 		return this.category;
 	}
+
+	public String getProductNo() {
+		return productNo;
+	}
+
+	public ProductCategory getCategory() {
+		return category;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getManufacturerName() {
+		return manufacturerName;
+	}
+
+	public String getManufacturerID() {
+		return manufacturerID;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public double getCostPrice() {
+		return costPrice;
+	}
+
+	public double getMsrp() {
+		return msrp;
+	}
+
+	public int getStockKeepingUnit() {
+		return stockKeepingUnit;
+	}
+	
+	
 }

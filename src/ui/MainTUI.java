@@ -9,7 +9,7 @@ public class MainTUI {
      */
     public MainTUI() {
         // initialise instance variables
-        orderMenu = new OrderMenu();
+        
         
     }
 
@@ -18,7 +18,7 @@ public class MainTUI {
         while (!exit) { //! means while exit not is true (that is: false)
             int choice = writeMainMenu();
             if(choice == 1) {
-                orderMenu.start();
+                orderMenu = new OrderMenu();
                 
             }
             else if(choice == 2) { 

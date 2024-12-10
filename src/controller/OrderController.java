@@ -48,6 +48,7 @@ public class OrderController {
 	public void finishOrder() {
 		if (this.order.isPaid() == true) {
 			OrderContainer.getInstance().finishOrder(this.order);
+			this.order.printReceipt();
 			this.order = null;
 		}
 		
