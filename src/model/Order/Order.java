@@ -10,6 +10,12 @@ import model.Customer.Customer;
 import model.Customer.CustomerContainer;
 import model.Product.Product;
 
+/**
+ * Order which contains orderlines.
+ * Order have the parameter to hold order numbers, time of purchase, price and which customer there is on the order.
+ * And if the order is paid or not
+ * @author Jonas, Sofus, Lasse, Sebastian, Henrik
+ */
 public class Order {
 
 	private String orderNo;
@@ -21,6 +27,12 @@ public class Order {
 	
 	private static int count = 1;
 	
+
+	/**
+	 * Order constructor which counts the orderNo up one each time an order is made.
+	 * The order number starts at 1 and then the next order number is 2. <br>
+	 * The time of purchase is set by using the java package time.
+	 */
 	public Order() {
 		this.orderNo = "" + count;
 		count++;
@@ -36,10 +48,23 @@ public class Order {
 		this.orderLines = new ArrayList<>();
 	}
 	
+	/**
+	 * Adds the customer to the order
+	 * @param customer
+	 */
 	public void setCustomer(BusinessCustomer customer) {
 		this.customer = customer;
 	}
 	
+	/**
+	 * Creates a new orderline <br>
+	 * Adds the orderline to the order with Product and quantity <br>
+	 * Calls the setter for subtotal which calculates the price for the product. <br>
+	 * Calls the setPrice method which sums up all the subtotals <br>
+	 * Adds the orderline into orderlines which is the collection of orderlines
+	 * @param product
+	 * @param quantity
+	 */
 	public void addOrderLine(Product product, int quantity) {
 		OrderLine newOrderLine = new OrderLine(quantity);
 		newOrderLine.addProductToOrderLine(product);
@@ -49,6 +74,11 @@ public class Order {
 		orderLines.add(newOrderLine);
 	}
 	
+	/**
+	 * Prints the receipt for the order. <br>
+	 * First all the information about the customer is printed <br>
+	 * Then all the orderlines are looped through all lines in the order and prints them
+	 */
 	public void printReceipt() {
 		System.out.println();
 		if (this.customer != null) {

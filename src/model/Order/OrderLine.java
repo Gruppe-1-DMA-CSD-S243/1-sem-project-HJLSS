@@ -3,6 +3,11 @@ package model.Order;
 import model.Product.Product;
 import model.Product.ProductContainer;
 
+/**
+ * Orderline which contains products and information about those.
+ * @author Sofus, Jonas, Lasse, Henrik, Sebastian
+ * 
+ */
 public class OrderLine {
 	
 	private Product product;
