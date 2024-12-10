@@ -3,6 +3,9 @@ package model.Product;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Jonas, Henrik og Sofus
+ */
 public class ProductContainer {
 
 	private static ProductContainer instance;
@@ -23,6 +26,10 @@ public class ProductContainer {
 		return products.get(barcode);
 	}
 	
+	/**
+	 * Adds "product" to the HashMap "products" and sets the barcode on product as the key
+	 * @param product
+	 */
 	public void addProduct(Product product){
 		String key = product.getBarcode();
 		

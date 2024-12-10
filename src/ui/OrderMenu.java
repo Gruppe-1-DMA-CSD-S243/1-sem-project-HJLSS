@@ -4,7 +4,7 @@ import controller.OrderController;
 
 public class OrderMenu {
 	
-	OrderUI orderUI;
+	private OrderUI orderUI;
 	
 	public OrderMenu() {
 		start();

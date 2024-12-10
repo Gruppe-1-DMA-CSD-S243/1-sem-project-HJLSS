@@ -47,7 +47,7 @@ public class TryMe {
 		oc.addCustomerToOrder("cvrTest");
 		oc.makePayment(true);
 		oc.finishOrder();
-		
+				
 		Order testOrder = OrderContainer.getInstance().getOrders().get("1");
 	}
 	
