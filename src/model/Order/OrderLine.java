@@ -5,7 +5,7 @@ import model.Product.ProductContainer;
 
 /**
  * Orderline which contains products and information about those.
- * @author Sofus, Jonas, Lasse, Henrik, Sebastian
+ * @author Jonas, Sofus, Lasse, Sebastian, Henrik
  * 
  */
 public class OrderLine {

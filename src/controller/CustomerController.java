@@ -9,7 +9,7 @@ import model.Customer.CustomerContainer;
 
 /**Creates class for CustomerController.
  * Purpose of CustomController class, is to find customers by CVR. 
- * @author Lasse				
+ * @author Jonas, Sofus, Lasse, Sebastian, Henrik			
  */
 public class CustomerController {
 	

@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 /**
  * Ordercontainer which holds the orders in a collection using singleton.
- * @author Henrik, Sofus, Jonas, Lasse, Sebastian
+ * @author Jonas, Sofus, Lasse, Sebastian, Henrik
  */
 public class OrderContainer {
 	

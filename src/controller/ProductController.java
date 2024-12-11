@@ -5,6 +5,9 @@ import model.Product.ProductCategory;
 import model.Product.ProductCategoryContainer;
 import model.Product.ProductContainer;
 
+/**
+ * Product controller which finds the products by barcode and product category by productCategoryID 
+ */
 public class ProductController {
 
 	public ProductController() {
