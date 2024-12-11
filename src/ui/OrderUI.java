@@ -22,15 +22,13 @@ public class OrderUI {
 				
 				addProductToOrder(quantity, barcode);
 				
-				System.out.println(orderController.getOrder().getPrice());
 				start();
 			}
 			if (choice == 2) {
 				if (orderController.getOrder().getCustomer() == null) {
 					String cvr = TextInput.inputString("Indtast CVR");	
-					addCustomerToOrder(cvr);
 					
-					System.out.println(orderController.getOrder().getCustomer().getCVR());
+					addCustomerToOrder(cvr);
 				}
 				
 				else {
@@ -81,13 +79,22 @@ public class OrderUI {
 	}
 	
 	private void addProductToOrder(int quantity, String barcode) {
-		
-		orderController.addProductToOrder(barcode, quantity);
+		if (orderController.findProductByBarcode(barcode) != null) {
+			orderController.addProductToOrder(barcode, quantity);
+		}
+		else {
+			System.out.println("Ugyldig stregkode!");
+		}
 	}
 	
 	private void addCustomerToOrder(String cvr) {
 		
-		orderController.addCustomerToOrder(cvr);
+		if (orderController.findCustomerByCVR(cvr) != null) {
+			orderController.addCustomerToOrder(cvr);
+		}
+		else {
+			System.out.println("Ugyldigt CVR!");
+		}
 	}
 	
 	private void makePayment(double amount) {

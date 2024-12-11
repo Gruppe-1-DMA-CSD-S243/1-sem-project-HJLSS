@@ -23,7 +23,10 @@ public class ProductContainer {
 	}
 	
 	public Product findProductByBarcode(String barcode) {
-		return products.get(barcode);
+		if (products.containsKey(barcode)) {
+			return products.get(barcode);
+		}
+		return null;
 	}
 	
 	/**

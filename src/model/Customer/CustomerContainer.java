@@ -32,8 +32,11 @@ public class CustomerContainer {
 	 * @return
 	 */
 	public BusinessCustomer findCustomerByCVR(String cvr) {
-		BusinessCustomer foundCustomer = businessCustomers.get(cvr);
-		return foundCustomer;
+		if (businessCustomers.containsKey(cvr)) {
+			BusinessCustomer foundCustomer = businessCustomers.get(cvr);
+			return foundCustomer;
+		}
+		return null;
 	}
 	
 	/**Adds customer to HashMap
