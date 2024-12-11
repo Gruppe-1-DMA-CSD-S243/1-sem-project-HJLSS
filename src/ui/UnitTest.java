@@ -52,7 +52,11 @@ class UnitTest {
 		        () -> assertEquals("1", oc.getOrder().getOrderLineByProductBarcode("1").getProduct().getProductNo()),
 		        () -> assertEquals("1", oc.getOrder().getOrderLineByProductBarcode("2").getProduct().getProductNo())
 		    );
-		//Der skal sættes op så dette ikke giver fejl, vores sammenlignings værdi er ikke den som er i vores objekt
+			
+			/*
+			 * The object we're comparing is a new one made compared to the one that is
+			 * persisted in our system causing the assert function to return a failure.
+			 */
 		assertAll("category",
 		        () -> assertEquals(productCategory1, oc.getOrder().getOrderLineByProductBarcode("1").getProduct().getCategory()),
 		        () -> assertEquals(productCategory1, oc.getOrder().getOrderLineByProductBarcode("2").getProduct().getCategory())
