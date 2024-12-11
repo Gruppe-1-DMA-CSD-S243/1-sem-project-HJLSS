@@ -38,6 +38,11 @@ class UnitTest {
 		
 		ProductCategory productCategory1 = new ProductCategory("IDTest", "nameTest", "descriptionTest");
 		
+		assertAll("orderline quantity",
+		        () -> assertEquals(4, oc.getOrder().getOrderLineByProductBarcode("1").getQuantity()),
+		        () -> assertEquals(1, oc.getOrder().getOrderLineByProductBarcode("2").getQuantity())
+		    );
+		
 		assertAll("barcode",
 		        () -> assertEquals("1", oc.getOrder().getOrderLineByProductBarcode("1").getProduct().getBarcode()),
 		        () -> assertEquals("2", oc.getOrder().getOrderLineByProductBarcode("2").getProduct().getBarcode())
@@ -97,6 +102,8 @@ class UnitTest {
 		        () -> assertEquals(5, oc.getOrder().getOrderLineByProductBarcode("1").getProduct().getStockKeepingUnit()),
 		        () -> assertEquals(5, oc.getOrder().getOrderLineByProductBarcode("2").getProduct().getStockKeepingUnit())
 		    );
+		
+		
 		
 		
 		
