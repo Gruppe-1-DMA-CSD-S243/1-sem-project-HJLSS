@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 /**@author Lasse <br>
  * Purpose of CustomerContainer is to store information about BusinessCustomer. <br>
- * Has methods that allows for the Container to create and find Customers by cvr.<br>
+ * Has methods that allows for the Container find Customers by cvr.<br>
  * Also used a hashMap to store objects for BusinessCustomers. 
  */
 public class CustomerContainer {
