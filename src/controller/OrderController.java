@@ -4,6 +4,7 @@ import model.Customer.BusinessCustomer;
 import model.Customer.Customer;
 import model.Order.Order;
 import model.Order.OrderContainer;
+import model.Order.OrderLine;
 import model.Product.Product;
 
 /**
@@ -27,6 +28,8 @@ public class OrderController {
 	public void makeNewOrder() {
 		this.order = new Order();
 	}
+	
+	
 	
 	/**
 	 * Finds a product from the barcode by "asking" the product controller to find it.
@@ -52,9 +55,13 @@ public class OrderController {
 	 * @param quantity
 	 */
 	public void addProductToOrder(String barcode, int quantity) {
+		OrderLine newOrderLine = new OrderLine(quantity);
 		Product product = findProductByBarcode(barcode);
 		
-		this.order.addOrderLine(product, quantity);
+		newOrderLine.addProductToOrderLine(product);
+		newOrderLine.setSubTotal();
+		
+		this.order.addOrderLine(newOrderLine);
 	}
 	
 	/**

@@ -57,22 +57,18 @@ public class Order {
 	}
 	
 	/**
-	 * Creates a new orderline <br>
-	 * Adds the orderline to the order with Product and quantity <br>
-	 * Calls the setter for subtotal which calculates the price for the product. <br>
 	 * Calls the setPrice method which sums up all the subtotals <br>
 	 * Adds the orderline into orderlines which is the collection of orderlines
 	 * @param product
 	 * @param quantity
 	 */
-	public void addOrderLine(Product product, int quantity) {
-		OrderLine newOrderLine = new OrderLine(quantity);
-		newOrderLine.addProductToOrderLine(product);
-		newOrderLine.setSubTotal();
+	public void addOrderLine(OrderLine newOrderLine) {
 		
 		setPrice(newOrderLine.getSubTotal());
 		orderLines.add(newOrderLine);
 	}
+	
+	
 	
 	/**
 	 * Prints the receipt for the order. <br>
