@@ -8,7 +8,6 @@ public class OrderUI {
 	
 	public OrderUI() {
 		orderController = new OrderController();
-		createOrder();
 		start();
 	}
 	
@@ -67,15 +66,6 @@ public class OrderUI {
 		int choice = menu.prompt();
 		
 		return choice;
-	}
-	
-	
-	
-	
-	private void createOrder() {
-		
-		orderController.makeNewOrder();
-		
 	}
 	
 	private void addProductToOrder(int quantity, String barcode) {

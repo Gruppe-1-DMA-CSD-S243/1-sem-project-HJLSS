@@ -21,6 +21,7 @@ public class OrderController {
 	public OrderController() {
 		this.productController = new ProductController();
 		this.customerController = new CustomerController();
+		makeNewOrder();
 	}
 	
 	public void makeNewOrder() {
