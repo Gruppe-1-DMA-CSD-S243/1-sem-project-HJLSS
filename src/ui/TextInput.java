@@ -2,23 +2,15 @@ package ui;
 
 import java.util.Scanner;
 /**
- * Description of TextInput goes here.
+ * @author Jonas, Sofus, Lasse, Sebastian, Henrik
  * 
- * @author Istvan Knoll, Mogens Holm Iversen
- * @version 0.0.1 initial draft version
  */
 public class TextInput {
-    // instance variables 
 
-    /**
-     * Constructor for objects of TextInput
-     */
     public TextInput() {
-        // initialise instance variables
+
     }
     
-
-    //other methods
     public static int inputNumber(String question) {   
         Scanner keyboard = new Scanner(System.in);
         int number = 0;

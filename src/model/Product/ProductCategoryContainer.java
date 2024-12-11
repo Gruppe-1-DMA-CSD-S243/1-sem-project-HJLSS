@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author Jonas
+ * @author Jonas, Sofus, Lasse, Sebastian, Henrik
  */
 public class ProductCategoryContainer {
 

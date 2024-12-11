@@ -1,8 +1,8 @@
 package model.Product;
 
 /**
- * 
- * @author Jonas, Henrik og Sofus
+ * Superclass of product
+ * @author Jonas, Sofus, Lasse, Sebastian, Henrik
  */
 public class AdvancedProduct extends Product {
 

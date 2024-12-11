@@ -7,6 +7,7 @@ import model.Product.ProductContainer;
 
 /**
  * Product controller which finds the products by barcode and product category by productCategoryID 
+ * @author Jonas, Sofus, Lasse, Sebastian, Henrik
  */
 public class ProductController {
 

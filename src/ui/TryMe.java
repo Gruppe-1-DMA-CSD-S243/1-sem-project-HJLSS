@@ -11,9 +11,9 @@ import model.Product.ProductContainer;
 import model.Product.SimpleProduct;
 
 
-
-
-
+/**
+ * @author Jonas, Sofus, Lasse, Sebastian, Henrik
+ */
 public class TryMe {
 	
 	

@@ -1,7 +1,7 @@
 package model.Product;
 
 /**
- * @author Jonas, Henrik og Sofus
+ * @author Jonas, Sofus, Lasse, Sebastian, Henrik
  */
 public class Item {
 

@@ -2,17 +2,15 @@ package ui;
 
 import java.util.ArrayList;
 public class TextOptions {
-    // instance variables 
     private ArrayList<String> options;
     private String title;
     private boolean cancellable;
 
 
     /**
-     * Constructor for objects of TextOptions
+     * @author Jonas, Sofus, Lasse, Sebastian, Henrik
      */
     public TextOptions(String title, String cancelText) {
-        // initialise instance variables
         options = new ArrayList<>();
         this.title = title;
         if(cancelText != null) {
@@ -24,7 +22,7 @@ public class TextOptions {
     public TextOptions(String title) {
         this(title, null);
     }
-    //set and get methods
+
     public void addOption(String option) {
         options.add(option);
     }
@@ -48,5 +46,5 @@ public class TextOptions {
         }
         return choice;
     }
-    //other methods
+
 }

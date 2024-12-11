@@ -1,7 +1,7 @@
 package model.Product;
 
 /**
- * @author Jonas, Henrik og Sofus
+ * @author Jonas, Sofus, Lasse, Sebastian, Henrik
  */
 public class SimpleProduct extends Product {
 
@@ -14,6 +14,5 @@ public class SimpleProduct extends Product {
 				stockKeepingUnit);
 		
 	}
-	
 	
 }
