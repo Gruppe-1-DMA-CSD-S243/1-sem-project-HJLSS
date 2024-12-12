@@ -13,7 +13,7 @@ import model.Product.ProductCategoryContainer;
 import model.Product.ProductContainer;
 import model.Product.SimpleProduct;
 
-public class MainTest {
+public class Main {
 
 	public static void main(String[] args) {	
 		TryMe tryMe = new TryMe();

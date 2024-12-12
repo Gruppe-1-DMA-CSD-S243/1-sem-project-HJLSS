@@ -21,6 +21,8 @@ public class OrderUI {
 				
 				addProductToOrder(quantity, barcode);
 				
+				System.out.println("\n" + "Total: " + orderController.getOrder().getPrice());
+				
 				start();
 			}
 			if (choice == 2) {

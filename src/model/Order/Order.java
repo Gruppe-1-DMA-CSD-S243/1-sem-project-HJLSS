@@ -59,8 +59,7 @@ public class Order {
 	/**
 	 * Calls the setPrice method which sums up all the subtotals <br>
 	 * Adds the orderline into orderlines which is the collection of orderlines
-	 * @param product
-	 * @param quantity
+	 * @param newOrderLine
 	 */
 	public void addOrderLine(OrderLine newOrderLine) {
 		
@@ -78,7 +77,7 @@ public class Order {
 	public void printReceipt() {
 		System.out.println();
 		if (this.customer != null) {
-			System.out.println("Kunde ");
+			System.out.println("***Kunde***");
 			System.out.println("Navn: " + this.customer.getName());
 			System.out.println("Addresse: " + this.customer.getAddress());
 			System.out.println("Email: " + this.customer.getEmail());
