@@ -39,16 +39,6 @@ public class TryMe {
 		SimpleProduct foundProduct = (SimpleProduct)ProductContainer.getInstance().findProductByBarcode("1");
 		System.out.println(foundProduct.getProductCategory().getProductCategoryID());
 		
-		
-		OrderController oc = new OrderController();
-		oc.makeNewOrder();
-		oc.addProductToOrder("1", 4);
-		oc.addProductToOrder("2", 1);
-		oc.addCustomerToOrder("cvrTest");
-		oc.makePayment(true);
-		oc.finishOrder();
-				
-		Order testOrder = OrderContainer.getInstance().getOrders().get("1");
 	}
 	
 	
