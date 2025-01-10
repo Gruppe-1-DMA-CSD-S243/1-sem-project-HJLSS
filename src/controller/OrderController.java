@@ -98,6 +98,13 @@ public class OrderController {
 		return order;
 	}
 	
+	//Ny metode til at slette en orderLine
+	public void removeOrderLineFromOrder(OrderLine orderLine) {
+		order.getOrderLines().remove(orderLine);
+		order.setPrice(-orderLine.getSubTotal());
+	}
+	
+	
 	
 
 }
