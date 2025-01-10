@@ -82,10 +82,6 @@ public class OrderController {
 		this.order.setPaid(paid);
 	}
 	
-	public void removeOrderLineFromOrder(OrderLine orderLine) {
-		this.order.getOrderLines().remove(orderLine);
-		this.order.setPrice(-orderLine.getSubTotal());
-	}
 	
 	/**
 	 * If the amount paid isnt the same the or over the amount of the price then the order isnt paid.
