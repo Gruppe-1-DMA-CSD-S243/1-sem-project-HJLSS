@@ -21,6 +21,9 @@ public class TryMe {
 		BusinessCustomer businessCustomer1 = new BusinessCustomer("nameTest", "emailTest", "phoneTest", "addressTest", "cvrTest");
 		CustomerContainer.getInstance().addCustomer(businessCustomer1);
 		
+		BusinessCustomer businessCustomer2 = new BusinessCustomer("nameTest2", "emailTest2", "phoneTest2", "addressTest2", "cvrTest2");
+		CustomerContainer.getInstance().addCustomer(businessCustomer2);
+		
 		BusinessCustomer foundCustomer = CustomerContainer.getInstance().findCustomerByCVR("cvrTest");
 		System.out.println(foundCustomer.getCVR());
 		
