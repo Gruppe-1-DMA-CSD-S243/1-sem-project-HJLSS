@@ -9,9 +9,11 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.FlowLayout;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -68,13 +70,17 @@ public class MainMenu extends JFrame {
 		contentPane.add(northPanel, BorderLayout.NORTH);
 		northPanel.setLayout(new BorderLayout(0, 0));
 		
-		ImageIcon logo = new ImageIcon("C:\\Users\\Saas\\eclipse-workspace\\foerste_semester_projekt\\src\\resources\\Vestbjerg_Byggecenter_Logo.png");
-        Image image = logo.getImage();
-        Image resizedImage = image.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-        ImageIcon resizedImageIcon = new ImageIcon(resizedImage);
-        
-        lblLogo.setIcon(resizedImageIcon);
-        lblLogo.setBounds(20, 11, 253, 209);
+		try {
+			Image logo = ImageIO.read(getClass().getResourceAsStream("/images/Vestbjerg_Byggecenter_Logo.png"));
+			Image resizedImage = logo.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+	        ImageIcon resizedImageIcon = new ImageIcon(resizedImage);
+	        lblLogo.setIcon(resizedImageIcon);
+	        lblLogo.setBounds(20, 11, 253, 209);
+		} 
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		northPanel.add(lblLogo, BorderLayout.EAST);
 		

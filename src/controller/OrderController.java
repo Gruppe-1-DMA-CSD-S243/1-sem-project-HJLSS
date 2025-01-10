@@ -88,7 +88,7 @@ public class OrderController {
 	}
 	
 	/**
-	 * If the amount paid isnt the same the or over the amount of the price then the order isnt paid.
+	 * If the amount paid isn't the same the or over the amount of the price then the order isnt paid.
 	 */
 	public void finishOrder() {
 		if (this.order.isPaid() == true) {
