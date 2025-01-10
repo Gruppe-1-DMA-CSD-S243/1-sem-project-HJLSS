@@ -38,7 +38,7 @@ public class Order {
 		count++;
 		
 		LocalDateTime localDate = LocalDateTime.now();
-		DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("dd-mm-yyyy HH:mm:ss");
+		DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 		
 		String timeOfPurchase = localDate.format(formattedDate);
 		
@@ -54,6 +54,10 @@ public class Order {
 	 */
 	public void setCustomer(BusinessCustomer customer) {
 		this.customer = customer;
+	}
+	
+	public void removeCustomerFromOrder() {
+		this.customer = null;
 	}
 	
 	/**

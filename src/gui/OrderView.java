@@ -1,275 +1,291 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.EventQueue;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.OrderController;
+import model.Order.Order;
+import model.Order.OrderContainer;
 import model.Order.OrderLine;
 
-import javax.swing.JLabel;
+import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
-import javax.swing.JTextField;
+import javax.swing.JLabel;
+import java.awt.FlowLayout;
+import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
-public class OrderView extends JDialog {
+public class OrderView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private final JPanel contentPanel = new JPanel();
-	private JTable tblOrder;
-	private JTextField tfTotal;
-	private OrderTableModel otm;
-	private OrderController orderController = new OrderController();
-	private JTextField tfCustomer;
-
+	private JPanel contentPane;
+	private final JPanel northPanel = new JPanel();
+	private final JPanel southPanel = new JPanel();
+	private final JPanel centerPanel = new JPanel();
+	private final JLabel lblName = new JLabel("Ordre");
+	private final JButton btnCancel = new JButton("Annuller");
+	private final JScrollPane scrollPane = new JScrollPane();
+	private final JTable tblOrder = new JTable();
+	private OrderTableModel tblModel;
+	private OrderController orderController;
+	private final JPanel centerSouthPanel = new JPanel();
+	private final JPanel eastPanel = new JPanel();
+	private final JButton btnAddProduct = new JButton("Tilføj Produkt");
+	private final JButton btnAddCustomer = new JButton("Tilføj Kunde");
+	private final JPanel centerSouthWestPanel = new JPanel();
+	private final JPanel centerSouthEastPanel = new JPanel();
+	private final JLabel lblCustomer = new JLabel("Kunde:");
+	private final JLabel lblCustomerName = new JLabel("");
+	private final JLabel lblTotal = new JLabel("Total:");
+	private final JLabel lblTotalPrice = new JLabel("");
+	private final JButton btnMakePayment = new JButton("Betal Ordre");
+	private final JButton btnFinishOrder = new JButton("Bekræft Ordre");
+	private final JButton btnRemoveProduct = new JButton("Fjern Produkt");
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		try {
-			OrderView dialog = new OrderView();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					OrderView frame = new OrderView();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
-	
-	
 
 	/**
-	 * Create the dialog.
+	 * Create the frame.
 	 */
 	public OrderView() {
+		this.orderController = new OrderController();
 		initGUI();
 		displayOrderLines();
-		getTotalPrice();
-		getCustomer();
 	}
-
 	private void initGUI() {
-		// TODO Auto-generated method stub
-		setModal(true);
-		setBounds(100, 100, 483, 491);
-		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(new BorderLayout(0, 0));
-		{
-			JPanel panelNorth = new JPanel();
-			contentPanel.add(panelNorth, BorderLayout.NORTH);
-			{
-				JLabel lblNavn = new JLabel("Velkommen til ordren");
-				panelNorth.add(lblNavn);
-			}
-		}
-		{
-			JPanel panelCenter = new JPanel();
-			contentPanel.add(panelCenter, BorderLayout.CENTER);
-			panelCenter.setLayout(new BorderLayout(0, 0));
-			{
-				JScrollPane scrollPane = new JScrollPane();
-				panelCenter.add(scrollPane, BorderLayout.CENTER);
-				{
-					tblOrder = new JTable();
-					tblOrder.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-					scrollPane.setViewportView(tblOrder);
-				}
-			}
-			{
-				JPanel panelCenterEast = new JPanel();
-				panelCenter.add(panelCenterEast, BorderLayout.EAST);
-				GridBagLayout gbl_panelCenterEast = new GridBagLayout();
-				gbl_panelCenterEast.columnWidths = new int[]{97, 0};
-				gbl_panelCenterEast.rowHeights = new int[]{23, 0, 0, 0, 0};
-				gbl_panelCenterEast.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-				gbl_panelCenterEast.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-				panelCenterEast.setLayout(gbl_panelCenterEast);
-				{
-					JButton btnAddProduct = new JButton("Tilføj produkt");
-					btnAddProduct.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							launchAddProduct();
-						}
-					});
-					GridBagConstraints gbc_btnAddProduct = new GridBagConstraints();
-					gbc_btnAddProduct.fill = GridBagConstraints.HORIZONTAL;
-					gbc_btnAddProduct.insets = new Insets(0, 0, 5, 0);
-					gbc_btnAddProduct.anchor = GridBagConstraints.NORTH;
-					gbc_btnAddProduct.gridx = 0;
-					gbc_btnAddProduct.gridy = 0;
-					panelCenterEast.add(btnAddProduct, gbc_btnAddProduct);
-				}
-				{
-					JButton btnAddCustomer = new JButton("Tilføj kunde");
-					btnAddCustomer.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							launchAddCustomer();
-						}
-					});
-					GridBagConstraints gbc_btnAddCustomer = new GridBagConstraints();
-					gbc_btnAddCustomer.fill = GridBagConstraints.HORIZONTAL;
-					gbc_btnAddCustomer.insets = new Insets(0, 0, 5, 0);
-					gbc_btnAddCustomer.gridx = 0;
-					gbc_btnAddCustomer.gridy = 1;
-					panelCenterEast.add(btnAddCustomer, gbc_btnAddCustomer);
-				}
-				{
-					JButton btnDelete = new JButton("Slet produkt");
-					btnDelete.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							launchDelete();
-						}
-					});
-					GridBagConstraints gbc_btnDelete = new GridBagConstraints();
-					gbc_btnDelete.fill = GridBagConstraints.HORIZONTAL;
-					gbc_btnDelete.insets = new Insets(0, 0, 5, 0);
-					gbc_btnDelete.gridx = 0;
-					gbc_btnDelete.gridy = 2;
-					panelCenterEast.add(btnDelete, gbc_btnDelete);
-				}
-				{
-					JButton btnPrintReceipt = new JButton("Print kvittering");
-					GridBagConstraints gbc_btnPrintReceipt = new GridBagConstraints();
-					gbc_btnPrintReceipt.fill = GridBagConstraints.HORIZONTAL;
-					gbc_btnPrintReceipt.gridx = 0;
-					gbc_btnPrintReceipt.gridy = 3;
-					panelCenterEast.add(btnPrintReceipt, gbc_btnPrintReceipt);
-				}
-			}
-		}
-		{
-			JPanel panelCenterSouth = new JPanel();
-			contentPanel.add(panelCenterSouth, BorderLayout.SOUTH);
-			panelCenterSouth.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
-			{
-				JLabel lblCustomer = new JLabel("Kunde:");
-				panelCenterSouth.add(lblCustomer);
-			}
-			{
-				tfCustomer = new JTextField();
-				panelCenterSouth.add(tfCustomer);
-				tfCustomer.setColumns(10);
-			}
-			{
-				JLabel lblTotal = new JLabel("Total:");
-				panelCenterSouth.add(lblTotal);
-			}
-			{
-				tfTotal = new JTextField();
-				tfTotal.setEditable(false);
-				panelCenterSouth.add(tfTotal);
-				tfTotal.setColumns(10);
-			}
-		}
-		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						launchCancel();
-					}
-				});
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
-		}
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
+				setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
 		
+		contentPane.add(northPanel, BorderLayout.NORTH);
+		
+		northPanel.add(lblName);
+		FlowLayout flowLayout = (FlowLayout) southPanel.getLayout();
+		flowLayout.setAlignment(FlowLayout.RIGHT);
+		
+		contentPane.add(southPanel, BorderLayout.SOUTH);
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				returnToOrderMenu();
+			}
+		});
+		btnFinishOrder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishOrder();
+			}
+		});
+		
+		southPanel.add(btnFinishOrder);
+		
+		southPanel.add(btnCancel);
+		
+		contentPane.add(centerPanel, BorderLayout.CENTER);
+		centerPanel.setLayout(new BorderLayout(0, 0));
+		
+		centerPanel.add(scrollPane, BorderLayout.CENTER);
+		tblOrder.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		scrollPane.setViewportView(tblOrder);
+		
+		centerPanel.add(centerSouthPanel, BorderLayout.SOUTH);
+		centerSouthPanel.setLayout(new BorderLayout(0, 0));
+		FlowLayout flowLayout_1 = (FlowLayout) centerSouthWestPanel.getLayout();
+		flowLayout_1.setAlignment(FlowLayout.LEFT);
+		
+		centerSouthPanel.add(centerSouthWestPanel, BorderLayout.WEST);
+		
+		centerSouthWestPanel.add(lblCustomer);
+		
+		centerSouthWestPanel.add(lblCustomerName);
+		FlowLayout flowLayout_2 = (FlowLayout) centerSouthEastPanel.getLayout();
+		flowLayout_2.setAlignment(FlowLayout.RIGHT);
+		
+		centerSouthPanel.add(centerSouthEastPanel, BorderLayout.EAST);
+		
+		centerSouthEastPanel.add(lblTotal);
+		
+		centerSouthEastPanel.add(lblTotalPrice);
+		
+		centerPanel.add(eastPanel, BorderLayout.EAST);
+		GridBagLayout gbl_eastPanel = new GridBagLayout();
+		gbl_eastPanel.columnWidths = new int[]{97, 0};
+		gbl_eastPanel.rowHeights = new int[]{23, 0, 0, 0, 0};
+		gbl_eastPanel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_eastPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		eastPanel.setLayout(gbl_eastPanel);
+		btnAddProduct.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addProductToOrder();
+			}
+		});
+		
+		GridBagConstraints gbc_btnAddProduct = new GridBagConstraints();
+		gbc_btnAddProduct.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnAddProduct.insets = new Insets(0, 0, 5, 0);
+		gbc_btnAddProduct.anchor = GridBagConstraints.NORTH;
+		gbc_btnAddProduct.gridx = 0;
+		gbc_btnAddProduct.gridy = 0;
+		eastPanel.add(btnAddProduct, gbc_btnAddProduct);
+		
+		GridBagConstraints gbc_btnMakePayment = new GridBagConstraints();
+		gbc_btnMakePayment.anchor = GridBagConstraints.NORTH;
+		gbc_btnMakePayment.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnMakePayment.gridx = 0;
+		gbc_btnMakePayment.gridy = 3;
+		btnMakePayment.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				makePayment();
+			}
+		});
+		
+		GridBagConstraints gbc_btnAddCustomer = new GridBagConstraints();
+		gbc_btnAddCustomer.insets = new Insets(0, 0, 5, 0);
+		gbc_btnAddCustomer.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnAddCustomer.anchor = GridBagConstraints.NORTH;
+		gbc_btnAddCustomer.gridx = 0;
+		gbc_btnAddCustomer.gridy = 2;
+		btnAddCustomer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addCustomerToOrder();
+			}
+		});
+		
+		GridBagConstraints gbc_btnRemoveProduct = new GridBagConstraints();
+		gbc_btnRemoveProduct.anchor = GridBagConstraints.NORTH;
+		gbc_btnRemoveProduct.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnRemoveProduct.insets = new Insets(0, 0, 5, 0);
+		gbc_btnRemoveProduct.gridx = 0;
+		gbc_btnRemoveProduct.gridy = 1;
+		setVisibilityForRemoveProduct();
+		btnRemoveProduct.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				removeOrderLineFromOrder();
+			}
+		});
+		eastPanel.add(btnRemoveProduct, gbc_btnRemoveProduct);
+		eastPanel.add(btnAddCustomer, gbc_btnAddCustomer);
+		eastPanel.add(btnMakePayment, gbc_btnMakePayment);
 	}
 	
-	private void launchAddCustomer() {
-		// TODO Auto-generated method stub
-		CustomerToOrder customerToOrder = new CustomerToOrder(this);
-		customerToOrder.setVisible(true);
+	private void returnToOrderMenu() {
+		OrderMenu orderMenu = new OrderMenu();
+		orderMenu.setVisible(true);
+		hideFrame();
 	}
-
-
-
-	private void launchDelete() {
-		// TODO Auto-generated method stub
+	
+	void updateOrderLines() {
+		tblModel.setData(this.orderController.getOrder().getOrderLines());
+	}
+	
+	private void hideFrame() {
+		this.setVisible(false);
+		this.dispose();
+	}
+	
+//	void addProductToOrder(int quantity, String barcode) {
+//		if (orderController.findProductByBarcode(barcode) != null) {
+//			orderController.addProductToOrder(barcode, quantity);
+//		}
+//		else {
+//			System.out.println("Ugyldig stregkode!");
+//		}
+//	}
+	
+	private void addProductToOrder() {
+		OrderViewProduct addProduct = new OrderViewProduct(this);
+		addProduct.setVisible(true);
+	}
+	
+	private void removeOrderLineFromOrder() {
 		int selectedRow = tblOrder.getSelectedRow();
 		
-		if(selectedRow != -1) {
-			OrderLine selectedOrderLine = otm.getDataAt(selectedRow);
+		if (selectedRow != -1) {
+			OrderLine selectedOrderLine = tblModel.getOrderLineAt(selectedRow);
 			
-			orderController.removeOrderLineFromOrder(selectedOrderLine);
+			this.orderController.removeOrderLineFromOrder(selectedOrderLine);
 			
 			updateOrderLines();
 			
+			setVisibilityForRemoveProduct();
 			getTotalPrice();
 		}
 	}
-
-
-
-	private void launchAddProduct() {
-		// TODO Auto-generated method stub
-		ProductToOrder productToOrder = new ProductToOrder(this);
-		productToOrder.setVisible(true);
-		
-		
+	
+	void setVisibilityForRemoveProduct() {
+		if (orderController.getOrder().getOrderLines().isEmpty()) {
+			btnRemoveProduct.setVisible(false);
+		}
+		else {
+			btnRemoveProduct.setVisible(true);
+		}
 	}
 	
-	public void updateOrderLines() {
-		otm.setData(this.orderController.getOrder().getOrderLines());
+	private void addCustomerToOrder() {
+		OrderViewCustomer addCustomer = new OrderViewCustomer(this);
+		addCustomer.setVisible(true);
 	}
-
-
-
-	public void displayOrderLines() {
-		List<OrderLine> orderLines = new ArrayList<>();
-		otm = new OrderTableModel(orderLines);
-		tblOrder.setModel(otm);
+	
+	private void makePayment() {
+		OrderViewPayment makePayment = new OrderViewPayment(this);
+		makePayment.setVisible(true);
 	}
-
-
-
-	private void launchCancel() {
-		// TODO Auto-generated method stub
+	
+	private void finishOrder() {
+		Receipt receipt = new Receipt(this);
+		receipt.setVisible(true);
 		OrderMenu orderMenu = new OrderMenu();
 		orderMenu.setVisible(true);
 		
-		setVisible(false);
-		dispose();
+		orderController.finishOrder();
+		hideFrame();
 	}
 	
-	public OrderController getOrderController() {
+	OrderController getOrderController() {
 		return this.orderController;
 	}
 	
-	public JTextField getTotalPrice() {
-		double total = orderController.getOrder().getPrice();
-		tfTotal.setText("" + total);
-		
-		
-		return tfTotal;
+	JLabel getTotalPrice() {
+		return this.lblTotalPrice;
 	}
 	
-	public JTextField getCustomer() {
-		
-		return tfCustomer;
+	JLabel getCustomerName() {
+		return this.lblCustomerName;
+	}
+	
+	public void displayOrderLines() {
+		tblModel = new OrderTableModel(orderController.getOrder().getOrderLines());
+		tblOrder.setModel(tblModel);
+	}
+	
+	JButton getCustomerButton() {
+		return this.btnAddCustomer;
 	}
 
 }

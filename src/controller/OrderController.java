@@ -74,8 +74,17 @@ public class OrderController {
 		this.order.setCustomer(customer);
 	}
 	
+	public void removeCustomerFromOrder() {
+		this.order.removeCustomerFromOrder();
+	}
+	
 	public void makePayment(boolean paid) {
 		this.order.setPaid(paid);
+	}
+	
+	public void removeOrderLineFromOrder(OrderLine orderLine) {
+		this.order.getOrderLines().remove(orderLine);
+		this.order.setPrice(-orderLine.getSubTotal());
 	}
 	
 	/**

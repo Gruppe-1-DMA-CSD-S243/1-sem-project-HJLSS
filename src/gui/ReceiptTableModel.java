@@ -7,13 +7,13 @@ import javax.swing.table.AbstractTableModel;
 
 import model.Order.OrderLine; 
 
-public class OrderTableModel extends AbstractTableModel {
+public class ReceiptTableModel extends AbstractTableModel {
 	
 	private List<OrderLine> orderLines;
 	private static final String[] COL_NAMES = {
 			"Antal", "Produkt", "Pris", "Subtotal"};
 	
-	public OrderTableModel(List<OrderLine> orderLines) {
+	public ReceiptTableModel(List<OrderLine> orderLines) {
 		this.orderLines = orderLines;
 		if (this.orderLines == null) {
 			this.orderLines = new ArrayList<>();
