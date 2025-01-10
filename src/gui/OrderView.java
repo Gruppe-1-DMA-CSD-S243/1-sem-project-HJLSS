@@ -230,11 +230,11 @@ public class OrderView extends JFrame {
 			OrderLine selectedOrderLine = tblModel.getOrderLineAt(selectedRow);
 			
 			this.orderController.removeOrderLineFromOrder(selectedOrderLine);
+			getTotalPrice().setText("" + orderController.getOrder().getPrice());;
 			
 			updateOrderLines();
 			
 			setVisibilityForRemoveProduct();
-			getTotalPrice();
 		}
 	}
 	
