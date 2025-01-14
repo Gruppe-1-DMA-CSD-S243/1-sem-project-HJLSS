@@ -32,5 +32,9 @@ public class ToolContainer {
 		
 		tools.put(key, tool);
 	}
+	
+	public HashMap<String, Tool> getTools(){
+		return this.tools;
+	}
 
 }
