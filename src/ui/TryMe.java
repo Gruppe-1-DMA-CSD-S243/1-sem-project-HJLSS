@@ -1,14 +1,20 @@
 package ui;
 
 import controller.OrderController;
+import controller.LeaseController;
 import model.Customer.BusinessCustomer;
 import model.Customer.CustomerContainer;
+import model.Customer.PrivateCustomer;
+import model.Lease.Lease;
+import model.Lease.LeaseContainer;
 import model.Order.Order;
 import model.Order.OrderContainer;
 import model.Product.ProductCategory;
 import model.Product.ProductCategoryContainer;
 import model.Product.ProductContainer;
 import model.Product.SimpleProduct;
+import model.Tool.Tool;
+import model.Tool.ToolContainer;
 
 
 /**
@@ -16,8 +22,33 @@ import model.Product.SimpleProduct;
  */
 public class TryMe {
 	
+	private LeaseController leaseController;
 	
 	public void createTestData() {
+		PrivateCustomer privateCustomer1 = new PrivateCustomer("nameTestPrivate", "emailTestPrivate", "phoneTestPrivate", "addressTestPrivate");
+		CustomerContainer.getInstance().addPrivateCustomer(privateCustomer1);
+		
+		Tool tool1 = new Tool("1", "1", "1", "nameTest101", "123", "Stanley", "1000x", "stærk", 200.00, 600.00, 5);
+		ToolContainer.getInstance().addTool(tool1);
+		
+		System.out.println(CustomerContainer.getInstance().getPrivateCustomers().get("phoneTestPrivate").getName());
+		System.out.println(ToolContainer.getInstance().findToolByID("1").getName());
+		
+		leaseController = new LeaseController();
+		leaseController.makeNewLease();
+		leaseController.addExistingCustomerToLease("phoneTestPrivate");
+		leaseController.addToolToLease("1");
+		leaseController.finishLease();
+		
+		System.out.println("By leaseNo: " + LeaseContainer.getInstance().findLeaseByLeaseNo("1").getLeaseNo());
+		System.out.println("By toolID: " + LeaseContainer.getInstance().findLeaseByToolID("1").getLeaseNo());
+		System.out.println("By phoneNo: " + LeaseContainer.getInstance().findLeaseByPhoneNumber("phoneTestPrivate").getLeaseNo());
+		System.out.println(LeaseContainer.getInstance().findLeaseByPhoneNumber("phoneTestPrivate").isReturnOverdue());
+		
+		
+		
+		
+		
 		BusinessCustomer businessCustomer1 = new BusinessCustomer("nameTest", "emailTest", "phoneTest", "addressTest", "cvrTest");
 		CustomerContainer.getInstance().addCustomer(businessCustomer1);
 		

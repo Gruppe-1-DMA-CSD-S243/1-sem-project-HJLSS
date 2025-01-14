@@ -22,7 +22,7 @@ public class Lease {
 	private int leasePeriod;
 	private boolean returnOverdue;
 	
-	private LocalDate futureDate;
+	private LocalDateTime futureDate;
 	
 	private static int count = 1;
 	
@@ -32,7 +32,7 @@ public class Lease {
 		count++;
 		
 		this.leasePeriod = 7;
-		LocalDate localDate = LocalDate.now();
+		LocalDateTime localDate = LocalDateTime.now();
 		this.futureDate = localDate.plusDays(leasePeriod);
 		DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 		
@@ -104,7 +104,7 @@ public class Lease {
 	public boolean isReturnOverdue() {
 	    try {
 	        
-	        LocalDate currentDate = LocalDate.now();
+	        LocalDateTime currentDate = LocalDateTime.now();
 
 	        if (currentDate.isAfter(futureDate)) {
 	            System.out.println("The return is overdue.");
