@@ -30,7 +30,7 @@ public class LeaseContainer {
 			
 			String phoneNumberOfLease = currentLease.getCustomer().getPhone();
 			
-			if(phoneNumberOfLease == phoneNumber) {
+			if(phoneNumberOfLease.equals(phoneNumber)) {
 				matchingLease = currentLease;
 				
 				isFound = true;
@@ -51,7 +51,7 @@ public class LeaseContainer {
 			
 			String toolIdOfLease = currentLease.getTool().getId();
 			
-			if(toolIdOfLease == id) {
+			if(toolIdOfLease.equals(id)) {
 				matchingLease = currentLease;
 				
 				isFound = true;
@@ -83,5 +83,9 @@ public class LeaseContainer {
 	
 	public void finishLease(Lease lease) {
 		leases.add(lease);
+	}
+	
+	public ArrayList<Lease> getLeases(){
+		return this.leases;
 	}
 }

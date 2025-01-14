@@ -42,6 +42,11 @@ public class LeaseController {
 		this.lease.setCustomer(customerToAdd);
 	}
 	
+	public void returnTool(String toolID) {
+		Lease foundLease = findLeaseByToolID(toolID);
+		LeaseContainer.getInstance().getLeases().remove(foundLease);
+	}
+	
 	public void addExistingCustomerToLease(String phone) {
 		PrivateCustomer customerToAdd = this.customerController.findPrivateCustomerByPhone(phone);
 		
