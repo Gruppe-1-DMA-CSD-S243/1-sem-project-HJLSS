@@ -22,22 +22,65 @@ public class LeaseContainer {
 	}
 	
 	public Lease findLeaseByPhoneNumber(String phoneNumber) {
-		for(Lease lease: leases) {
-			if(lease.getCustomer().getPhone() == phoneNumber) {
-				return lease;
+		int index = 0;
+		boolean isFound = false;
+		Lease matchingLease = null;
+		
+		while(index < leases.size() && isFound == false) {
+			Lease currentLease = leases.get(index);
+			
+			String phoneNumberOfLease = currentLease.getCustomer().getPhone();
+			
+			if(phoneNumberOfLease == phoneNumber) {
+				matchingLease = currentLease;
+				
+				isFound = true;
 			}
+			
 		}
-		return null;
+		
+		return matchingLease;
 	}
 	
-	public Lease findLeaseByToolID(String id) {
-		for(Lease lease: leases) {
-			if(lease.getTool().getId() == id) {
-				return lease;
+	public Lease findLeaseByToolId(String id) {
+		int index = 0;
+		boolean isFound = false;
+		Lease matchingLease = null;
+		
+		while(index < leases.size() && isFound == false) {
+			Lease currentLease = leases.get(index);
+			
+			String toolIdOfLease = currentLease.getTool().getId();
+			
+			if(toolIdOfLease == id) {
+				matchingLease = currentLease;
+				
+				isFound = true;
 			}
 		}
-		return null;
+		return matchingLease;
 	}
+	
+	public Lease findLeaseByLeaseNo(String leaseNo) {
+		int index = 0;
+		boolean isFound = false;
+		Lease matchingLease = null;
+		
+		while(index < leases.size() && isFound == false) {
+			Lease currentLease = leases.get(index);
+			
+			String leaseNoOfLease = currentLease.getLeaseNo();
+			
+			if(leaseNoOfLease == leaseNo) {
+				matchingLease = currentLease;
+				
+				isFound = true;
+			}
+		}
+		return matchingLease;
+	}
+	
+	
 	
 	public void finishLease(Lease lease) {
 		leases.add(lease);

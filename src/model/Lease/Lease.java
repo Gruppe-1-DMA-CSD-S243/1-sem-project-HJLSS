@@ -6,10 +6,10 @@ import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import javax.tools.Tool;
 
 import model.Customer.Customer;
 import model.Order.OrderLine;
+import model.Tool.Tool;
 
 public class Lease {
 	
