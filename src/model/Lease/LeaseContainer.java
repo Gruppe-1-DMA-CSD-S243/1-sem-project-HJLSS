@@ -8,7 +8,6 @@ public class LeaseContainer {
 
 	private static LeaseContainer instance;
 	private ArrayList<Lease> leases;
-	private Lease lease;
 	
 	private LeaseContainer() {
 		this.leases = new ArrayList<>();
@@ -42,7 +41,7 @@ public class LeaseContainer {
 		return matchingLease;
 	}
 	
-	public Lease findLeaseByToolId(String id) {
+	public Lease findLeaseByToolID(String id) {
 		int index = 0;
 		boolean isFound = false;
 		Lease matchingLease = null;

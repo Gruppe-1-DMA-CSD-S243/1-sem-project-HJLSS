@@ -32,8 +32,8 @@ public class Lease {
 		count++;
 		
 		this.leasePeriod = 7;
-		LocalDateTime localDate = LocalDateTime.now();
-		LocalDateTime futureDate = localDate.plusDays(leasePeriod);
+		LocalDate localDate = LocalDate.now();
+		this.futureDate = localDate.plusDays(leasePeriod);
 		DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 		
 		String timeOfLeaseFormated = localDate.format(formattedDate);

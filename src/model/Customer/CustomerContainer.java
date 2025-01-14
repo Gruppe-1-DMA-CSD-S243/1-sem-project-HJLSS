@@ -11,6 +11,7 @@ import java.util.HashMap;
 public class CustomerContainer {
 	private static CustomerContainer instance;	
 	private HashMap<String, BusinessCustomer> businessCustomers;
+	private HashMap<String, PrivateCustomer> privateCustomers;
 
 
 	/**
@@ -18,6 +19,7 @@ public class CustomerContainer {
 	 */
 	private CustomerContainer() {
 		businessCustomers = new HashMap<>();
+		privateCustomers = new HashMap<>();
 	}
 	
 	public static CustomerContainer getInstance() {
@@ -39,6 +41,14 @@ public class CustomerContainer {
 		return null;
 	}
 	
+	public PrivateCustomer findPrivateCustomerByPhone(String phone) {
+		if (privateCustomers.containsKey(phone)) {
+			PrivateCustomer foundCustomer = privateCustomers.get(phone);
+			return foundCustomer;
+		}
+		return null;
+	}
+	
 	/**Adds customer to HashMap
 	 * 
 	 * @param customerToAdd
@@ -48,7 +58,16 @@ public class CustomerContainer {
 		businessCustomers.put(key, customerToAdd);
 	}
 	
+	public void addPrivateCustomer(PrivateCustomer customerToAdd) {
+		String key = customerToAdd.getPhone();
+		privateCustomers.put(key, customerToAdd);
+	}
+	
 	public HashMap<String, BusinessCustomer> getCustomers(){
 		return this.businessCustomers;
+	}
+	
+	public HashMap<String, PrivateCustomer> getPrivateCustomers(){
+		return this.privateCustomers;
 	}
 }

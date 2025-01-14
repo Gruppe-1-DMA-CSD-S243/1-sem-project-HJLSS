@@ -2,6 +2,7 @@ package controller;
 
 import model.Customer.PrivateCustomer;
 import model.Lease.Lease;
+import model.Lease.LeaseContainer;
 import model.Tool.Tool;
 
 public class LeaseController {
@@ -23,8 +24,8 @@ public class LeaseController {
 		return toolController.findToolByID(id);
 	}
 	
-	public PrivateCustomer findCustomerByPhoneNumber(String phoneNumber) {
-		return customerController.findCustomerByPhoneNumber(phoneNumber);
+	public PrivateCustomer findPrivateCustomerByPhone(String phone) {
+		return customerController.findPrivateCustomerByPhone(phone);
 	}
 	
 	public void addToolToLease(String id) {

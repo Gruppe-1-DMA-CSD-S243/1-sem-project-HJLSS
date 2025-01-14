@@ -5,6 +5,7 @@ import java.util.HashMap;
 import model.Customer.BusinessCustomer;
 import model.Customer.Customer;
 import model.Customer.CustomerContainer;
+import model.Customer.PrivateCustomer;
 
 
 /**Creates class for CustomerController.
@@ -23,6 +24,10 @@ public class CustomerController {
 	 * @return
 	 */
 	public BusinessCustomer findCustomerByCVR(String cvr) {
-		return CustomerContainer.getInstance().getCustomers().get(cvr);
+		return CustomerContainer.getInstance().findCustomerByCVR(cvr);
+	}
+	
+	public PrivateCustomer findPrivateCustomerByPhone(String phone) {
+		return CustomerContainer.getInstance().findPrivateCustomerByPhone(phone);
 	}
 }
