@@ -93,6 +93,10 @@ public class Lease {
 		this.tool = newTool;
 	}
 	
+	public Tool getTool() {
+		return tool;
+	}
+	
 	public String getTimeOfLease() {
 		return this.timeOfLease;
 	}
