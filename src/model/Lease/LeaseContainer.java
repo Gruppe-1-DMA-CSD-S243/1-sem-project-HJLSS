@@ -2,6 +2,8 @@ package model.Lease;
 
 import java.util.ArrayList;
 
+import model.Tool.Tool;
+
 public class LeaseContainer {
 
 	private static LeaseContainer instance;
@@ -25,14 +27,16 @@ public class LeaseContainer {
 				return lease;
 			}
 		}
+		return null;
 	}
 	
 	public Lease findLeaseByToolID(String id) {
 		for(Lease lease: leases) {
-			if(lease.getTool().getID() == id) {
+			if(lease.getTool().getId() == id) {
 				return lease;
 			}
 		}
+		return null;
 	}
 	
 	public void finishLease(Lease lease) {
