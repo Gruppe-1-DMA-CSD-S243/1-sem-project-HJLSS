@@ -30,4 +30,8 @@ public class CustomerController {
 	public PrivateCustomer findPrivateCustomerByPhone(String phone) {
 		return CustomerContainer.getInstance().findPrivateCustomerByPhone(phone);
 	}
+	
+	public void addPrivateCustomer(PrivateCustomer customerToAdd) {
+		CustomerContainer.getInstance().addPrivateCustomer(customerToAdd);
+	}
 }

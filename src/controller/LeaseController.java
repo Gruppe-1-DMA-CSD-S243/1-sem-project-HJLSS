@@ -1,5 +1,6 @@
 package controller;
 
+import model.Customer.CustomerContainer;
 import model.Customer.PrivateCustomer;
 import model.Lease.Lease;
 import model.Lease.LeaseContainer;
@@ -36,6 +37,13 @@ public class LeaseController {
 	
 	public void addCustomerToLease(String name, String email, String phone, String address) {
 		PrivateCustomer customerToAdd = new PrivateCustomer(name, email, phone, address);
+		customerController.addPrivateCustomer(customerToAdd);
+		
+		this.lease.setCustomer(customerToAdd);
+	}
+	
+	public void addExistingCustomerToLease(String phone) {
+		PrivateCustomer customerToAdd = this.customerController.findPrivateCustomerByPhone(phone);
 		
 		this.lease.setCustomer(customerToAdd);
 	}
@@ -51,7 +59,6 @@ public class LeaseController {
 	public void finishLease() {
 		LeaseContainer.getInstance().finishLease(this.lease);
 		this.lease = null;
-		
 	}
 	
 	
