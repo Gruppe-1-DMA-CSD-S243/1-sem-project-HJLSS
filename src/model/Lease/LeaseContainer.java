@@ -70,7 +70,7 @@ public class LeaseContainer {
 			
 			String leaseNoOfLease = currentLease.getLeaseNo();
 			
-			if(leaseNoOfLease == leaseNo) {
+			if(leaseNoOfLease.equals(leaseNo)) {
 				matchingLease = currentLease;
 				
 				isFound = true;

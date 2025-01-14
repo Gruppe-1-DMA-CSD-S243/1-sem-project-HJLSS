@@ -40,12 +40,10 @@ public class TryMe {
 		leaseController.addToolToLease("1");
 		leaseController.finishLease();
 		
-		System.out.println("By leaseNo: " + LeaseContainer.getInstance().findLeaseByLeaseNo("1").getLeaseNo());
 		System.out.println("By toolID: " + LeaseContainer.getInstance().findLeaseByToolID("1").getLeaseNo());
 		System.out.println("By phoneNo: " + LeaseContainer.getInstance().findLeaseByPhoneNumber("phoneTestPrivate").getLeaseNo());
 		System.out.println(LeaseContainer.getInstance().findLeaseByPhoneNumber("phoneTestPrivate").isReturnOverdue());
-		
-		
+		System.out.println("By leaseNo: " + LeaseContainer.getInstance().findLeaseByLeaseNo("1").getLeaseNo());
 		
 		
 		
