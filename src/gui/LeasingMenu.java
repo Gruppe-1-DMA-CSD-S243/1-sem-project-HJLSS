@@ -10,6 +10,10 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 public class LeasingMenu extends JFrame {
 
@@ -17,6 +21,12 @@ public class LeasingMenu extends JFrame {
 	private JPanel contentPane;
 	private final JPanel southPanel = new JPanel();
 	private final JButton btnBack = new JButton("Tilbage");
+	private final JPanel northPanel = new JPanel();
+	private final JPanel centerPanel = new JPanel();
+	private final JLabel lblName = new JLabel("Leasing Menu");
+	private final JButton btnCreate = new JButton("Opret");
+	private final JButton btnReturn = new JButton("Retuner");
+	private final JButton btnHistory = new JButton("Leasinghistorik");
 
 	/**
 	 * Launch the application.
@@ -59,8 +69,51 @@ public class LeasingMenu extends JFrame {
 		});
 		
 		southPanel.add(btnBack);
+		
+		contentPane.add(northPanel, BorderLayout.NORTH);
+		
+		northPanel.add(lblName);
+		
+		contentPane.add(centerPanel, BorderLayout.CENTER);
+		GridBagLayout gbl_centerPanel = new GridBagLayout();
+		gbl_centerPanel.columnWidths = new int[]{0, 0};
+		gbl_centerPanel.rowHeights = new int[]{0, 0, 0, 0};
+		gbl_centerPanel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_centerPanel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		centerPanel.setLayout(gbl_centerPanel);
+		
+		GridBagConstraints gbc_btnCreate = new GridBagConstraints();
+		gbc_btnCreate.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnCreate.insets = new Insets(0, 0, 5, 0);
+		gbc_btnCreate.gridx = 0;
+		gbc_btnCreate.gridy = 0;
+		btnCreate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				launchLeasingView();
+			}
+		});
+		centerPanel.add(btnCreate, gbc_btnCreate);
+		
+		GridBagConstraints gbc_btnReturn = new GridBagConstraints();
+		gbc_btnReturn.insets = new Insets(0, 0, 5, 0);
+		gbc_btnReturn.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnReturn.gridx = 0;
+		gbc_btnReturn.gridy = 1;
+		centerPanel.add(btnReturn, gbc_btnReturn);
+		
+		GridBagConstraints gbc_btnHistory = new GridBagConstraints();
+		gbc_btnHistory.gridx = 0;
+		gbc_btnHistory.gridy = 2;
+		centerPanel.add(btnHistory, gbc_btnHistory);
 	}
 	
+	protected void launchLeasingView() {
+		// TODO Auto-generated method stub
+		LeasingView leasingView = new LeasingView();
+		leasingView.setVisible(true);
+		hideFrame();
+	}
+
 	private void returnToMainMenu() {
 		MainMenu mainMenu = new MainMenu();
 		mainMenu.setVisible(true);

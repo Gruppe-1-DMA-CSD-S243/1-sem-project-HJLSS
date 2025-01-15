@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import model.Customer.CustomerContainer;
 import model.Customer.PrivateCustomer;
 import model.Lease.Lease;
@@ -11,10 +14,12 @@ public class LeaseController {
 	private ToolController toolController;
 	private CustomerController customerController;
 	private Lease lease;
+	private List<Lease> leases;
 	
 	public LeaseController() {
 		this.toolController = new ToolController();
 		this.customerController = new CustomerController();
+		this.leases = new ArrayList<>();
 	}
 	
 	public void makeNewLease() {
@@ -65,6 +70,20 @@ public class LeaseController {
 		LeaseContainer.getInstance().finishLease(this.lease);
 		this.lease = null;
 	}
+	
+	
+	public void addLease(Lease lease) {
+		leases.add(lease);
+	}
+
+	public List<Lease> getLeases() {
+		return leases;
+	}
+	
+	public Lease getLease() {
+		return this.lease;
+	}
+	
 	
 	
 }

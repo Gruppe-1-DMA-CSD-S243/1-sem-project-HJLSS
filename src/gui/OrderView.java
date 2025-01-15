@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.OrderController;
+import model.Lease.Lease;
 import model.Order.Order;
 import model.Order.OrderContainer;
 import model.Order.OrderLine;
@@ -287,5 +288,7 @@ public class OrderView extends JFrame {
 	JButton getCustomerButton() {
 		return this.btnAddCustomer;
 	}
+	
+	
 
 }
