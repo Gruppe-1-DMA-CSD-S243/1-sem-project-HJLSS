@@ -119,8 +119,10 @@ public class ReturnView extends JFrame {
 		this.leaseController = new LeaseController(toolID);
 		
 		if (leaseController.findLeaseByToolID(toolID) != null) {
-			leaseController.returnTool(toolID);
+			LeaseReceipt leaseReceipt = new LeaseReceipt(this, toolID);
+			leaseReceipt.setVisible(true);
 			
+			leaseController.returnTool(toolID);
 			returnToLeasingMenu();
 		}
 		
@@ -139,6 +141,10 @@ public class ReturnView extends JFrame {
 	private void hideFrame() {
 		this.setVisible(false);
 		this.dispose();
+	}
+	
+	LeaseController getLeaseController() {
+		return this.leaseController;
 	}
 
 }

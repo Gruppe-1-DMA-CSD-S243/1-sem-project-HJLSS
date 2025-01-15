@@ -28,7 +28,7 @@ public class OrderReceipt extends JFrame {
 	private final JPanel centerPanel = new JPanel();
 	private final JScrollPane scrollPane = new JScrollPane();
 	private final JTable tblOrder = new JTable();
-	private ReceiptTableModel tblModel;
+	private OrderReceiptTableModel tblModel;
 	private OrderView orderView;
 	private final JLabel lblOrder = new JLabel("Ordrenummer:");
 	private final JLabel lblOrderNo = new JLabel("");
@@ -176,7 +176,7 @@ public class OrderReceipt extends JFrame {
 	}
 	
 	public void displayOrderLines() {
-		tblModel = new ReceiptTableModel(this.orderView.getOrderController().getOrder().getOrderLines());
+		tblModel = new OrderReceiptTableModel(this.orderView.getOrderController().getOrder().getOrderLines());
 		tblOrder.setModel(tblModel);
 	}
 	
