@@ -80,8 +80,4 @@ public class LeaseController {
 		LeaseContainer.getInstance().finishLease(this.lease);
 		this.lease = null;
 	}
-	
-	public Lease getLease() {
-		return this.lease;
-	}
 }
