@@ -23,6 +23,11 @@ public class LeaseController {
 		makeNewLease();
 	}
 	
+	public LeaseController(String toolID) {
+		this.toolController = new ToolController();
+		this.customerController = new CustomerController();
+	}
+	
 	public void makeNewLease() {
 		this.lease = new Lease();
 		leases.add(lease);

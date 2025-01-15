@@ -97,7 +97,7 @@ public class LeasingMenu extends JFrame {
 		gbc_btnReturn.gridy = 1;
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				launchReturnLease();
+				launchReturnView();
 			}
 		});
 		centerPanel.add(btnReturn, gbc_btnReturn);
@@ -113,7 +113,7 @@ public class LeasingMenu extends JFrame {
 		hideFrame();
 	}
 	
-	private void launchReturnLease() {
+	private void launchReturnView() {
 		ReturnView returnView = new ReturnView();
 		returnView.setVisible(true);
 		hideFrame();
