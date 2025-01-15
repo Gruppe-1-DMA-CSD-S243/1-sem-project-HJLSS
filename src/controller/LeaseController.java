@@ -66,5 +66,7 @@ public class LeaseController {
 		this.lease = null;
 	}
 	
-	
+	public Lease getLease() {
+		return this.lease;
+	}
 }

@@ -29,10 +29,13 @@ public class TryMe {
 		CustomerContainer.getInstance().addPrivateCustomer(privateCustomer1);
 		
 		Tool tool1 = new Tool("1", "1", "1", "nameTest101", "123", "Stanley", "1000x", "stærk", 200.00, 600.00, 5);
+		Tool tool2 = new Tool("2", "1", "1", "nameTest101", "123", "Stanley", "1000x", "stærk", 200.00, 600.00, 5);
 		ToolContainer.getInstance().addTool(tool1);
+		ToolContainer.getInstance().addTool(tool2);
 		
 		System.out.println(CustomerContainer.getInstance().getPrivateCustomers().get("phoneTestPrivate").getName());
 		System.out.println(ToolContainer.getInstance().findToolByID("1").getName());
+
 		
 		leaseController = new LeaseController();
 		leaseController.makeNewLease();
@@ -44,11 +47,7 @@ public class TryMe {
 		System.out.println("By phoneNo: " + LeaseContainer.getInstance().findLeaseByPhoneNumber("phoneTestPrivate").getLeaseNo());
 		System.out.println("By leaseNo: " + LeaseContainer.getInstance().findLeaseByLeaseNo("1").getLeaseNo());
 		System.out.println(LeaseContainer.getInstance().findLeaseByPhoneNumber("phoneTestPrivate").isReturnOverdue());
-		
-		leaseController.returnTool("1");
-		System.out.println("By toolID: " + LeaseContainer.getInstance().findLeaseByToolID("1").getLeaseNo());
-		
-		
+	
 		
 		BusinessCustomer businessCustomer1 = new BusinessCustomer("nameTest", "emailTest", "phoneTest", "addressTest", "cvrTest");
 		CustomerContainer.getInstance().addCustomer(businessCustomer1);

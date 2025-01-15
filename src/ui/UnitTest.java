@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import controller.LeaseController;
 import controller.OrderController;
 import controller.ProductController;
 import model.Customer.BusinessCustomer;
@@ -15,7 +16,7 @@ import model.Product.ProductCategory;
 class UnitTest {
 
 	@Test
-	 void test() {
+	 void testOfOrder() {
 		TryMe tryMe = new TryMe();
 		tryMe.createTestData();
 		
@@ -106,12 +107,78 @@ class UnitTest {
 		        () -> assertEquals(5, oc.getOrder().getOrderLineByProductBarcode("1").getProduct().getStockKeepingUnit()),
 		        () -> assertEquals(5, oc.getOrder().getOrderLineByProductBarcode("2").getProduct().getStockKeepingUnit())
 		    );
+	}
 		
-		
-		
-		
-		
-		
+		@Test
+		 void testOfLease() {
+			TryMe tryMe = new TryMe();
+			tryMe.createTestData();
+			
+			LeaseController lc = new LeaseController();
+			lc.makeNewLease();
+			
+			lc.addToolToLease("1");
+//			lc.addToolToLease("2");
+			lc.addCustomerToLease("nameTest", "emailTest", "phoneTest", "addressTest");
+//			lc.makePayment(true);
+			
+			assertEquals("nameTest", lc.findPrivateCustomerByPhone("phoneTest").getName());
+			assertEquals("emailTest", lc.findPrivateCustomerByPhone("phoneTest").getEmail());
+			assertEquals("phoneTest", lc.findPrivateCustomerByPhone("phoneTest").getPhone());
+			assertEquals("addressTest", lc.findPrivateCustomerByPhone("phoneTest").getAddress());
+			
+			assertEquals("nameTest101", lc.findToolByID("1").getName());
+			
+			assertAll("id",
+		        () -> assertEquals("1", lc.getLease().getTool().getId())
+
+			    );
+			
+			assertAll("barcode",
+			        () -> assertEquals("1", lc.getLease().getTool().getBarcode())
+
+			    );
+
+			assertAll("name",
+			        () -> assertEquals("nameTest101", lc.getLease().getTool().getName())
+			       
+			    );
+			
+			assertAll("manufacturerName",
+			        () -> assertEquals("Stanley", lc.getLease().getTool().getManufacturerName())
+			      
+			    );
+			
+			assertAll("manufacturerID",
+			        () -> assertEquals("123", lc.getLease().getTool().getManufacturerId())
+			        
+			    );
+			
+			assertAll("model",
+			        () -> assertEquals("1000x", lc.getLease().getTool().getModel())
+			       
+			    );
+			
+			assertAll("description",
+			        () -> assertEquals("stærk", lc.getLease().getTool().getDescription())
+			
+			    );
+			
+			assertAll("productNo",
+			        () -> assertEquals("1", lc.getLease().getTool().getProductNo())
+			       
+			    );
+			
+			assertAll("costPrice",
+			        () -> assertEquals(200.00, lc.getLease().getTool().getCostPrice())
+			      
+			    );
+						
+			assertAll("stockKeepingUnit",
+			        () -> assertEquals(5, lc.getLease().getTool().getStockKeepingUnit())
+			        
+			    );
+				
 	}
 
 }
