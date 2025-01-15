@@ -20,7 +20,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
 
-public class Receipt extends JFrame {
+public class OrderReceipt extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -50,7 +50,7 @@ public class Receipt extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Receipt frame = new Receipt(null);
+					OrderReceipt frame = new OrderReceipt(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -62,7 +62,7 @@ public class Receipt extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Receipt(OrderView orderView) {
+	public OrderReceipt(OrderView orderView) {
 		setAlwaysOnTop(true);
 		this.orderView = orderView;
 		initGUI();

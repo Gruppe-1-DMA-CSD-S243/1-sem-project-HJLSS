@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import model.Customer.CustomerContainer;
 import model.Customer.PrivateCustomer;
 import model.Lease.Lease;
@@ -10,15 +13,27 @@ public class LeaseController {
 
 	private ToolController toolController;
 	private CustomerController customerController;
+	private List<Lease> leases;
 	private Lease lease;
 	
 	public LeaseController() {
 		this.toolController = new ToolController();
 		this.customerController = new CustomerController();
+		this.leases = new ArrayList<>();
+		makeNewLease();
 	}
 	
 	public void makeNewLease() {
 		this.lease = new Lease();
+		leases.add(lease);
+	}
+	
+	public List<Lease> getLeases() {
+		return this.leases;
+	}
+	
+	public Lease getLease() {
+		return this.lease;
 	}
 	
 	public Tool findToolByID(String id) {
@@ -35,16 +50,16 @@ public class LeaseController {
 		this.lease.setTool(foundTool);
 	}
 	
+	public void returnTool(String toolID) {
+		Lease foundLease = findLeaseByToolID(toolID);
+		LeaseContainer.getInstance().getLeases().remove(foundLease);
+	}
+	
 	public void addCustomerToLease(String name, String email, String phone, String address) {
 		PrivateCustomer customerToAdd = new PrivateCustomer(name, email, phone, address);
 		customerController.addPrivateCustomer(customerToAdd);
 		
 		this.lease.setCustomer(customerToAdd);
-	}
-	
-	public void returnTool(String toolID) {
-		Lease foundLease = findLeaseByToolID(toolID);
-		LeaseContainer.getInstance().getLeases().remove(foundLease);
 	}
 	
 	public void addExistingCustomerToLease(String phone) {

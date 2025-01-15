@@ -23,6 +23,7 @@ public class Lease {
 	private boolean returnOverdue;
 	
 	private LocalDateTime futureDate;
+	private String futureDateString;
 	
 	private static int count = 1;
 	
@@ -35,8 +36,10 @@ public class Lease {
 		LocalDateTime localDate = LocalDateTime.now();
 		this.futureDate = localDate.plusDays(leasePeriod);
 		DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		DateTimeFormatter formattedFutureDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		
 		String timeOfLeaseFormated = localDate.format(formattedDate);
+		this.futureDateString = futureDate.format(formattedFutureDate);
 		
 		this.timeOfLease = timeOfLeaseFormated;
 		this.paid = false;
@@ -119,7 +122,13 @@ public class Lease {
 	    return returnOverdue;
 	}
 
-
+	public LocalDateTime getFutureDate() {
+		return this.futureDate;
+	}
+	
+	public String getFutureDateString() {
+		return this.futureDateString;
+	}
 	
 	
 }

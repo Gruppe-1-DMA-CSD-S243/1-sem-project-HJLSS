@@ -34,19 +34,16 @@ public class TryMe {
 		System.out.println(CustomerContainer.getInstance().getPrivateCustomers().get("phoneTestPrivate").getName());
 		System.out.println(ToolContainer.getInstance().findToolByID("1").getName());
 		
-		leaseController = new LeaseController();
-		leaseController.makeNewLease();
-		leaseController.addExistingCustomerToLease("phoneTestPrivate");
-		leaseController.addToolToLease("1");
-		leaseController.finishLease();
+//		leaseController = new LeaseController();
+//		leaseController.makeNewLease();
+//		leaseController.addExistingCustomerToLease("phoneTestPrivate");
+//		leaseController.addToolToLease("1");
+//		leaseController.finishLease();
 		
-		System.out.println("By toolID: " + LeaseContainer.getInstance().findLeaseByToolID("1").getLeaseNo());
-		System.out.println("By phoneNo: " + LeaseContainer.getInstance().findLeaseByPhoneNumber("phoneTestPrivate").getLeaseNo());
-		System.out.println("By leaseNo: " + LeaseContainer.getInstance().findLeaseByLeaseNo("1").getLeaseNo());
-		System.out.println(LeaseContainer.getInstance().findLeaseByPhoneNumber("phoneTestPrivate").isReturnOverdue());
-		
-		leaseController.returnTool("1");
-		System.out.println("By toolID: " + LeaseContainer.getInstance().findLeaseByToolID("1").getLeaseNo());
+//		System.out.println("By toolID: " + LeaseContainer.getInstance().findLeaseByToolID("1").getLeaseNo());
+//		System.out.println("By phoneNo: " + LeaseContainer.getInstance().findLeaseByPhoneNumber("phoneTestPrivate").getLeaseNo());
+//		System.out.println("By leaseNo: " + LeaseContainer.getInstance().findLeaseByLeaseNo("1").getLeaseNo());
+//		System.out.println(LeaseContainer.getInstance().findLeaseByPhoneNumber("phoneTestPrivate").isReturnOverdue());
 		
 		
 		

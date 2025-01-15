@@ -21,7 +21,7 @@ public class ToolContainer {
 	}
 	
 	public Tool findToolByID(String id) {
-		if(tools.containsKey(id)) {
+		if (tools.containsKey(id)) {
 			return tools.get(id);
 		}
 		return null;

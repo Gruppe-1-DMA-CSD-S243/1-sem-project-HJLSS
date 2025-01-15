@@ -39,7 +39,7 @@ public class OrderView extends JFrame {
 	private OrderTableModel tblModel;
 	private OrderController orderController;
 	private final JPanel centerSouthPanel = new JPanel();
-	private final JPanel eastPanel = new JPanel();
+	private final JPanel centerEastPanel = new JPanel();
 	private final JButton btnAddProduct = new JButton("Tilføj Produkt");
 	private final JButton btnAddCustomer = new JButton("Tilføj Kunde");
 	private final JPanel centerSouthWestPanel = new JPanel();
@@ -133,13 +133,13 @@ public class OrderView extends JFrame {
 		
 		centerSouthEastPanel.add(lblTotalPrice);
 		
-		centerPanel.add(eastPanel, BorderLayout.EAST);
-		GridBagLayout gbl_eastPanel = new GridBagLayout();
-		gbl_eastPanel.columnWidths = new int[]{97, 0};
-		gbl_eastPanel.rowHeights = new int[]{23, 0, 0, 0, 0};
-		gbl_eastPanel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gbl_eastPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		eastPanel.setLayout(gbl_eastPanel);
+		centerPanel.add(centerEastPanel, BorderLayout.EAST);
+		GridBagLayout gbl_centerEastPanel = new GridBagLayout();
+		gbl_centerEastPanel.columnWidths = new int[]{97, 0};
+		gbl_centerEastPanel.rowHeights = new int[]{23, 0, 0, 0, 0};
+		gbl_centerEastPanel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_centerEastPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		centerEastPanel.setLayout(gbl_centerEastPanel);
 		btnAddProduct.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addProductToOrder();
@@ -152,7 +152,7 @@ public class OrderView extends JFrame {
 		gbc_btnAddProduct.anchor = GridBagConstraints.NORTH;
 		gbc_btnAddProduct.gridx = 0;
 		gbc_btnAddProduct.gridy = 0;
-		eastPanel.add(btnAddProduct, gbc_btnAddProduct);
+		centerEastPanel.add(btnAddProduct, gbc_btnAddProduct);
 		
 		GridBagConstraints gbc_btnMakePayment = new GridBagConstraints();
 		gbc_btnMakePayment.anchor = GridBagConstraints.NORTH;
@@ -189,9 +189,9 @@ public class OrderView extends JFrame {
 				removeOrderLineFromOrder();
 			}
 		});
-		eastPanel.add(btnRemoveProduct, gbc_btnRemoveProduct);
-		eastPanel.add(btnAddCustomer, gbc_btnAddCustomer);
-		eastPanel.add(btnMakePayment, gbc_btnMakePayment);
+		centerEastPanel.add(btnRemoveProduct, gbc_btnRemoveProduct);
+		centerEastPanel.add(btnAddCustomer, gbc_btnAddCustomer);
+		centerEastPanel.add(btnMakePayment, gbc_btnMakePayment);
 	}
 	
 	private void returnToOrderMenu() {
@@ -258,7 +258,7 @@ public class OrderView extends JFrame {
 	}
 	
 	private void finishOrder() {
-		Receipt receipt = new Receipt(this);
+		OrderReceipt receipt = new OrderReceipt(this);
 		receipt.setVisible(true);
 		OrderMenu orderMenu = new OrderMenu();
 		orderMenu.setVisible(true);

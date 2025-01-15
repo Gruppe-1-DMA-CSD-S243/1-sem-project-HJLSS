@@ -22,7 +22,7 @@ public class OrderMenu extends JFrame {
 	private final JPanel northPanel = new JPanel();
 	private final JPanel southPanel = new JPanel();
 	private final JPanel centerPanel = new JPanel();
-	private final JLabel lblName = new JLabel("Ordre Menu");
+	private final JLabel lblName = new JLabel("Ordremenu");
 	private final JButton btnBack = new JButton("Tilbage");
 	private final JButton btnCreateOrder = new JButton("Opret Ordre");
 	private final JButton btnOrderHistory = new JButton("Ordrehistorik");
