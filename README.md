@@ -1,6 +1,6 @@
 # First Semester Project for the applied Computer Science degree at UCN. 
 
-## Focus areas:
+## Focus areas
 - Three Layer Architecture
 - OOP
 - Inheritance
