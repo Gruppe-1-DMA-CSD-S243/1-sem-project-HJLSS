@@ -1,4 +1,5 @@
 # First Semester Project for the applied Computer Science degree at UCN. 
+This system was for the fictive company Vestbjerg Byggecenter A/S. The system takes in products for an order, and allows the purchaser to confirm the order, leading to a receipt being created.
 
 ## Focus areas
 - Three Layer Architecture
