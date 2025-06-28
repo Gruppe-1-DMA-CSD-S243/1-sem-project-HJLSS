@@ -9,7 +9,6 @@
 - GRASP
 - GUI
 
-
 ## Contributors
 - [Henrik Kringel](https://github.com/hhkringel) - Developer
 - [Jonas Hovaldt](https://github.com/theirusername) - Developer
