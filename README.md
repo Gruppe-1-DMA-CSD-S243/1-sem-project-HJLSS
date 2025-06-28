@@ -1,4 +1,4 @@
-1. Semester Project for the applied Computer Science degree at UCN. 
+First Semester Project for the applied Computer Science degree at UCN. 
 
 Focus areas:
 - Three Layer Architecture
